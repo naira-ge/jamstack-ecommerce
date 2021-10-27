@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import {
@@ -12,15 +11,13 @@ import {
   CardActionArea,
   Button
 } from '@material-ui/core';
+import db from '../../lib/db';
+import Product from '../../models/Product';
 import useStyles from '../../utils/styles';
 import Layout from '../../components/Layout';
-import data from '../../utils/data';
 
-function ProductScreen() {
+export default function ProductScreen({ product }) {
   const classes = useStyles();
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = data.products.find((p) => p.slug === slug);
 
   if (!product) {
     return <Typography>Product Not Found</Typography>;
@@ -109,4 +106,17 @@ function ProductScreen() {
   );
 }
 
-export default ProductScreen;
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+
+  await db.connect();
+  const product = await Product.findOne({ slug }).lean();
+  await db.disconnect();
+
+  return {
+    props: {
+      product: db.convertDocToObj(product)
+    }
+  };
+}
