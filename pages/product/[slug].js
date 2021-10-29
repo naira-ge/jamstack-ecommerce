@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Link,
   Typography,
@@ -21,6 +22,7 @@ import { Store } from '../../utils/Store';
 export default function ProductScreen({ product }) {
   const { dispatch } = useContext(Store);
   const classes = useStyles();
+  const router = useRouter();
 
   if (!product) {
     return <Typography>Product Not Found</Typography>;
@@ -33,6 +35,7 @@ export default function ProductScreen({ product }) {
       return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity: 1 } });
+    router.push('/cart');
   };
 
   return (
