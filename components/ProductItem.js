@@ -30,8 +30,8 @@ function ProductItem({ product, addToCartHandler }) {
       <CardActions>
         <Typography>${product.price}</Typography>
         <Button
-          size="small"
-          color="primary"
+          size="medium"
+          color="secondary"
           onClick={() => addToCartHandler(product)}
         >
           Add to cart
