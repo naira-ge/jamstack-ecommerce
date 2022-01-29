@@ -25,6 +25,13 @@ const useStyles = makeStyles({
     marginTop: 10,
     marginBottom: 10,
     frontWeight: 'bold'
+  },
+  form: {
+    maxWidth: 800,
+    margin: '20vh auto',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '1px 1px 10px rgba(0, 0, 0, 0.5)',
   }
 });
 

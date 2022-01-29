@@ -1,12 +1,16 @@
 import React from 'react';
-import { Typography, ListItem, List, TextField } from '@material-ui/core';
+import NextLink from 'next/link';
+import { Typography,ListItem,List,TextField,Button,Link } from '@material-ui/core';
 import Layout from '../components/Layout';
+import useStyles from '../utils/styles';
 
 
-export default function login() {
+export default function Login() {
+    const classes = useStyles();
+
     return (
         <Layout title="Login">
-            <form>
+            <form className={classes.form}>
                 <Typography component="h1" variant="h1">
                     Login
                 </Typography>
@@ -28,6 +32,12 @@ export default function login() {
                             label="Password"
                             inputProps={{ type: 'password' }}>
                         </TextField>
+                    </ListItem>
+                    <ListItem>
+                        <Button variant="contained" type="submit" fullWidth color="secondary">Login</Button>
+                    </ListItem>
+                    <ListItem>
+                        Don't have an account? {' ' }<NextLink href="/register" passHref><Link  color="secondary"> Register</Link></NextLink>
                     </ListItem>
                 </List>
             </form>
