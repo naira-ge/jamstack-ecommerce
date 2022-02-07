@@ -37,7 +37,7 @@ export default function Login() {
                         <Button variant="contained" type="submit" fullWidth color="secondary">Login</Button>
                     </ListItem>
                     <ListItem>
-                        Don't have an account? {' ' }<NextLink href="/register" passHref><Link  color="secondary"> Register</Link></NextLink>
+                        Don't have an account? &nbsp; <NextLink href="/register" passHref><Link  color="secondary"> Register</Link></NextLink>
                     </ListItem>
                 </List>
             </form>
